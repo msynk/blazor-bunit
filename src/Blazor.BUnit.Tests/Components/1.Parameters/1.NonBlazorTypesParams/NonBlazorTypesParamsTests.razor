@@ -1,0 +1,14 @@
+﻿@namespace Blazor.BUnit.Tests
+@attribute [TestClass]
+@code
+{
+    [TestMethod]
+    public void Test()
+    {
+        using var ctx = new Bunit.TestContext();
+
+        var lines = new List<string> { "Hello", "World" };
+
+        var cut = ctx.Render(@<NonBlazorTypesParams Numbers="42" Lines="lines" />);
+    }
+}

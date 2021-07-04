@@ -1,0 +1,14 @@
+﻿@namespace Blazor.BUnit.Tests
+@attribute [TestClass]
+@code
+{
+    [TestMethod]
+    public void Test()
+    {
+        using var ctx = new Bunit.TestContext();
+
+        var cut = ctx.Render(@<CascadingValue Name="LoggedInUser" Value=@("Name of User")>
+                                <CascadingParams />
+                              </CascadingValue>);
+    }
+}

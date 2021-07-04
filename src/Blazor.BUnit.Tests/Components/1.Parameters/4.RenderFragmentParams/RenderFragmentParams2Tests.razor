@@ -1,0 +1,16 @@
+﻿@namespace Blazor.BUnit.Tests
+@attribute [TestClass]
+@code
+{
+    [TestMethod]
+    public void Test()
+    {
+        using var ctx = new Bunit.TestContext();
+
+        var cut = ctx.Render(@<RenderFragmentParams>
+                                <Content>
+                                    <Counter />
+                                </Content>
+                              </RenderFragmentParams>);
+    }
+}

@@ -1,0 +1,11 @@
+﻿@namespace Blazor.BUnit.Wasm
+
+<h3>EventCallback parameters</h3>
+
+@code {
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClick { get; set; }
+
+    [Parameter]
+    public EventCallback OnSomething { get; set; }
+}

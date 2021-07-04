@@ -1,0 +1,20 @@
+﻿@namespace Blazor.BUnit.Tests
+@attribute [TestClass]
+@code
+{
+    [TestMethod]
+    public void Test()
+    {
+        using var ctx = new Bunit.TestContext();
+
+        var isDarkTheme = true;
+
+        var cut = ctx.Render(@<CascadingValue Name="LoggedInUser" Value=@("Name of User")>
+                                <CascadingValue Name="LoggedInEmail" Value=@("user@example.com")>
+                                    <CascadingValue Value="isDarkTheme">
+                                        <CascadingParams />
+                                    </CascadingValue>
+                                </CascadingValue>
+                              </CascadingValue>);
+    }
+}

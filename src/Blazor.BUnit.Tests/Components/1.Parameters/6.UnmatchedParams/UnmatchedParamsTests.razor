@@ -1,0 +1,12 @@
+﻿@namespace Blazor.BUnit.Tests
+@attribute [TestClass]
+@code
+{
+    [TestMethod]
+    public void Test()
+    {
+        using var ctx = new Bunit.TestContext();
+
+        var cut = ctx.Render(@<UnmatchedParams some-unknown-param="a value"></UnmatchedParams>);
+    }
+}

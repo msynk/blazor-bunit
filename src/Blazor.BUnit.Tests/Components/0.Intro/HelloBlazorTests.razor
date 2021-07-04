@@ -1,0 +1,18 @@
+﻿@namespace Blazor.BUnit.Tests
+@attribute [TestClass]
+@code
+{
+    [TestMethod]
+    public void HelloBlazorComponentShouldRenderCorrectly()
+    {
+        // Arrange
+        using var ctx = new Bunit.TestContext();
+
+        // Act
+        // var cut = ctx.Render(@<Greeter Name=name />);
+        var cut = ctx.Render(@<HelloBlazor />);
+
+        // Assert
+        cut.MarkupMatches(@<h3>Hello from Blazor!</h3>);
+    }
+}

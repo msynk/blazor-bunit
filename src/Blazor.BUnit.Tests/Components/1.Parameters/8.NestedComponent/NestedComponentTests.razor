@@ -1,0 +1,15 @@
+﻿@namespace Blazor.BUnit.Tests
+@attribute [TestClass]
+@code
+{
+    [TestMethod]
+    public void Test()
+    {
+        using var ctx = new Bunit.TestContext();
+
+        var wrapper = ctx.RenderComponent<Wrapper>(parameters => parameters
+          .AddChildContent<HelloBlazor>()
+        );
+        var cut = wrapper.FindComponent<HelloBlazor>();
+    }
+}

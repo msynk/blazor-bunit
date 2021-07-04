@@ -1,0 +1,22 @@
+﻿@namespace Blazor.BUnit.Tests
+@inherits BunitTestContext
+@attribute [TestClass]
+@code
+{
+    [TestMethod,
+        DataRow("Saleh"),
+        DataRow("Yasser"),
+        DataRow("Khashi"),
+    ]
+    public void GreeterComponentShouldRenderCorrectly(string name)
+    {
+        // Arrange
+        // it is implemented in the base class
+
+        // Act
+        var cut = Render(@<Greeter Name="@name" />);
+
+        // Assert
+        cut.MarkupMatches(@<h3>Hello @name</h3>);
+    }
+}

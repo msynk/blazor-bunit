@@ -1,0 +1,20 @@
+﻿@namespace Blazor.BUnit.Wasm
+@typeparam TItem
+
+<h3>Templates parameters</h3>
+
+<div id="generic-list">
+    @foreach (var item in Items)
+    {
+        @Temp(item)
+    }
+</div>
+
+@code
+{
+    [Parameter]
+    public IEnumerable<TItem> Items { get; set; }
+
+    [Parameter]
+    public RenderFragment<TItem> Temp { get; set; }
+}

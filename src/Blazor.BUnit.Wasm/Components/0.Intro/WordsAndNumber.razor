@@ -1,0 +1,8 @@
+﻿@namespace Blazor.BUnit.Wasm
+
+<span>@Number</span>: @string.Join(", ", Words)
+
+@code {
+    [Parameter] public string[] Words { get; set; }
+    [Parameter] public int Number { get; set; }
+}

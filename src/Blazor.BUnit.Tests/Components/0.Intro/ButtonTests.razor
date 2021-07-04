@@ -1,0 +1,20 @@
+﻿@namespace Blazor.BUnit.Tests
+@inherits BunitTestContext
+@attribute [TestClass]
+@code
+{
+    [TestMethod]
+    public void ButtonComponentShouldRenderCorrectly()
+    {
+        // Arrange
+        // it is implemented in the base class
+
+        // Act
+        var cut = Render(@<Button>
+                            <h1>hello</h1>
+                          </Button>);
+
+        // Assert
+        cut.MarkupMatches(@<button><h1>hello</h1></button>);
+    }
+}

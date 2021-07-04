@@ -1,0 +1,21 @@
+﻿@namespace Blazor.BUnit.Wasm
+
+<h3>Counter</h3>
+<div>Count: @count</div>
+<button @onclick="HandleOnClick">+</button>
+
+@code {
+    [Parameter] public EventCallback<int> OnChange { get; set; }
+
+    private int count = 0;
+
+    private void HandleOnClick()
+    {
+        count++;
+        if (OnChange.HasDelegate)
+        {
+            OnChange.InvokeAsync(count);
+        }
+    }
+
+}

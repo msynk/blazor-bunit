@@ -1,0 +1,8 @@
+﻿@namespace Blazor.BUnit.Wasm
+
+<h3>Unmatched parameters</h3>
+
+@code {
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object> InputAttributes { get; set; }
+}
