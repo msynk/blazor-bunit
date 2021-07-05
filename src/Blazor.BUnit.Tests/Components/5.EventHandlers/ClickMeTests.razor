@@ -1,0 +1,21 @@
+﻿@namespace Blazor.BUnit.Tests
+@attribute [TestClass]
+@code
+{
+    [TestMethod]
+    public void Test()
+    {
+        // Arrange
+        using var ctx = new Bunit.TestContext();
+        var cut = ctx.Render(@<ClickMe />);
+        var buttonElement = cut.Find("button");
+
+        // Act
+        buttonElement.Click();
+        buttonElement.Click(detail: 3, ctrlKey: true);
+        buttonElement.Click(new MouseEventArgs());
+
+        // Assert
+        // ...
+    }
+}
