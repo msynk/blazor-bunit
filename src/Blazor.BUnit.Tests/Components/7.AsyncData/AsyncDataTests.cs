@@ -23,7 +23,7 @@ namespace Blazor.BUnit.Tests
             textService.SetResult(text);
 
             // Wait for state before continuing test
-            cut.WaitForState(() => cut.Find("p").TextContent == "Hello World");
+            cut.WaitForState(() => cut.Find("p").TextContent == text);
 
             // Assert - verify result has been set
             cut.MarkupMatches($"<p>{text}</p>");

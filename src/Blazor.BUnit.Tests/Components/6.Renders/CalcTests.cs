@@ -18,7 +18,7 @@ namespace Blazor.BUnit.Tests
             // Indirectly re-renders through the call to StateHasChanged 
             // in the Calculate(x, y) method.
             cut.InvokeAsync(() => cut.Instance.Calculate(1, 2));
-            //cut.Instance.Calculate(1, 2);
+            // cut.Instance.Calculate(1, 2);
 
             cut.MarkupMatches("<output>3</output>");
         }

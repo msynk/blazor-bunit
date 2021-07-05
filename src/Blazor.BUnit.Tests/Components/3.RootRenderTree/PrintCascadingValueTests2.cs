@@ -14,9 +14,11 @@ namespace Blazor.BUnit.Tests
         {
             using var ctx = new Bunit.TestContext();
 
+            var value = "my value";
+
             // Add a cascading value to the test contexts root render tree.
             var isAdded = ctx.RenderTree.TryAdd<CascadingValue<string>>(parameters => parameters
-              .Add(p => p.Value, "BAR?")
+              .Add(p => p.Value, value)
             );
 
             // The component will be rendered as a chld of last 
@@ -24,7 +26,7 @@ namespace Blazor.BUnit.Tests
             var cut = ctx.RenderComponent<PrintCascadingValue>();
 
             // Verify that the cascading value was passed correctly.
-            cut.MarkupMatches($"Cascading value: BAR?");
+            cut.MarkupMatches($"Cascading value: {value}");
         }
     }
 }

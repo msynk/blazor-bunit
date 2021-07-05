@@ -7,9 +7,6 @@
     {
         using var ctx = new Bunit.TestContext();
 
-        var wrapper = ctx.RenderComponent<Wrapper>(parameters => parameters
-          .AddChildContent<HelloBlazor>()
-        );
-        var cut = wrapper.FindComponent<HelloBlazor>();
+        var cut = ctx.Render<HelloBlazor>(@<Wrapper><HelloBlazor/></Wrapper>);
     }
 }
