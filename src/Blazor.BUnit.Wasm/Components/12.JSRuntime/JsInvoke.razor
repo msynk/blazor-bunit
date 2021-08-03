@@ -1,0 +1,25 @@
+﻿@namespace Blazor.BUnit.Wasm
+<h1>Js Invoke</h1>
+
+<button class="invoke" @onclick="Invoke">Invoke</button>
+<span>result: @result</span>
+
+<button class="invoke-void" @onclick="InvokeVoid">Invoke Void</button>
+
+@code
+{
+    private string result { get; set; }
+
+    [Inject] public IJSRuntime JsRuntime { get; set; }
+
+    private async void Invoke()
+    {
+        result = await JsRuntime.InvokeAsync<string>("TestInvoke");
+    }
+
+    private async void InvokeVoid()
+    {
+        await JsRuntime.InvokeVoidAsync("TestInvokeVoid");
+        result = "InvokeVoid";
+    }
+}

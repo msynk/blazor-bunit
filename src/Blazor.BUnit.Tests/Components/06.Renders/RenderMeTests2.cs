@@ -16,14 +16,14 @@ namespace Blazor.BUnit.Tests
             var cut = ctx.RenderComponent<RenderMe>(parameters => parameters
               .Add(p => p.Value, "Value1")
             );
-            cut.MarkupMatches("<div>Value1</div>");
+            cut.MarkupMatches("<div>Value: Value1</div>");
 
             // Re-render with new parameters
             cut.SetParametersAndRender(parameters => parameters
               .Add(p => p.Value, "Value2")
             );
 
-            cut.MarkupMatches("<div>Value2</div>");
+            cut.MarkupMatches("<div>Value: Value2</div>");
         }
     }
 }

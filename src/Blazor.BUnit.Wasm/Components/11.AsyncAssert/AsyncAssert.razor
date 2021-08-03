@@ -1,0 +1,17 @@
+﻿@namespace Blazor.BUnit.Wasm
+<h1>Async Assert</h1>
+<p>@text</p>
+
+@code
+{
+    string text = string.Empty;
+
+    [Inject] public IDataService DataService { get; set; }
+
+    [Parameter] public int Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        text = await DataService.Get(Id);
+    }
+}

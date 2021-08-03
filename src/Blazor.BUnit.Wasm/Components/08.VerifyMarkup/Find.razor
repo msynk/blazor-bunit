@@ -1,0 +1,21 @@
+﻿@namespace Blazor.BUnit.Wasm
+<table>
+    <caption>This is a caption</caption>
+    <tbody>
+        <tr>
+            <td style="white-space:nowrap">Foo</td>
+            <td>Bar</td>
+        </tr>
+        <tr>
+            <td style="white-space:nowrap">Baz</td>
+            <td>Boo</td>
+        </tr>
+    </tbody>
+</table>
+<div>Age: @Age</div>
+<div>Age: @Age</div>
+
+@code {
+    [Parameter]
+    public int Age { get; set; }
+}
