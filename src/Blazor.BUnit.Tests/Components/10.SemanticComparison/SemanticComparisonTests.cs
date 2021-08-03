@@ -17,11 +17,11 @@ namespace Blazor.BUnit.Tests
 
             var h1 = cut.Find("h1");
 
-            var expected = @"<h1>Semantic Comparison</h1>";
+            var expected = @"<h1>Semantic Comparison</h1><!-- this is comment -->";
 
             h1.MarkupMatches(expected);
 
-            expected = @"<h1 diff:ignore></h1>";
+            expected = @"<h1 diff:ignore required><span></span></h1>";
 
             h1.MarkupMatches(expected);
         }
@@ -38,7 +38,7 @@ namespace Blazor.BUnit.Tests
 
             h2.MarkupMatches(expected);
 
-            expected = @"<h2 class:ignore required:ignore>This is test</h2>";
+            expected = @"<h2 class:ignore=""asdfasdf"" required:ignore>This is test</h2>";
 
             h2.MarkupMatches(expected);
         }
@@ -68,7 +68,7 @@ namespace Blazor.BUnit.Tests
 
             var pre = cut.Find("pre");
 
-            var expected = @"<pre diff:whitespace=""normalize"">This is test<span>ttt</span></pre>";
+            var expected = @"<pre diff:whitespace=""RemoveWhitespaceNodes"">This is test<span> ttt </span></pre>";
 
             pre.MarkupMatches(expected);
         }

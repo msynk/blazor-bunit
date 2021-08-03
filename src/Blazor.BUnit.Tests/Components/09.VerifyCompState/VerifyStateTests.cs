@@ -16,8 +16,11 @@ namespace Blazor.BUnit.Tests
             IRenderedComponent<VerifyState> cut = ctx.RenderComponent<VerifyState>();
 
             VerifyState alert = cut.Instance;
+            alert.Age = 20;
+            alert.Name = "Saleh";            
 
-            // Assert against <VerifyState /> instance
+            Assert.AreEqual(alert.Greet(), "Hello Saleh");
+
         }
     }
 }

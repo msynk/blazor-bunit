@@ -28,7 +28,7 @@ namespace Blazor.BUnit.Tests
 
             invokeButton.Click();
 
-            span.MarkupMatches("<span>result: </span>");
+            span.MarkupMatches("<span>result: null</span>");
 
             invokeVoidButton.Click();
 
@@ -82,6 +82,17 @@ namespace Blazor.BUnit.Tests
             invokeButton.Click();
 
             span.MarkupMatches($"<span>result: {result}</span>");
+
+
+
+
+            invocationHandler.SetResult("testt");
+
+            invokeButton.Click();
+
+            span.MarkupMatches($"<span>result: testt</span>");
+
+
 
             invocationVoidHandler.SetVoidResult();
 

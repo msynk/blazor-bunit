@@ -22,6 +22,8 @@ namespace Blazor.BUnit.Tests
             var cut = ctx.RenderComponent<AsyncAssert>(parameters => parameters.Add(p => p.Id, id));
             var p = cut.Find("p");
 
+            //p.MarkupMatches($"<p>Data-{id}</p>");
+
             cut.WaitForAssertion(() => p.MarkupMatches($"<p>Data-{id}</p>"), TimeSpan.FromSeconds(2));
         }
     }

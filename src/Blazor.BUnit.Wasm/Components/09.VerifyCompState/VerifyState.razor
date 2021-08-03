@@ -1,2 +1,13 @@
 ﻿@namespace Blazor.BUnit.Wasm
 <h3>Verify State</h3>
+
+@code {
+    public int Age { get; set; }
+
+    public string Name { get; set; }
+
+    public string Greet()
+    {
+        return $"Hello {Name}";
+    }
+}

@@ -2,22 +2,22 @@
 <h1>Js Invoke</h1>
 
 <button class="invoke" @onclick="Invoke">Invoke</button>
-<span>result: @result</span>
+<span>result: @(result ?? "null")</span>
 
 <button class="invoke-void" @onclick="InvokeVoid">Invoke Void</button>
 
 @code
 {
-    private string result { get; set; }
+    private string result { get; set; } = "";
 
     [Inject] public IJSRuntime JsRuntime { get; set; }
 
-    private async void Invoke()
+    private async Task Invoke()
     {
         result = await JsRuntime.InvokeAsync<string>("TestInvoke");
     }
 
-    private async void InvokeVoid()
+    private async Task InvokeVoid()
     {
         await JsRuntime.InvokeVoidAsync("TestInvokeVoid");
         result = "InvokeVoid";
