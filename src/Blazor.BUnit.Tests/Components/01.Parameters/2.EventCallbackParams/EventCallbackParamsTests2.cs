@@ -1,9 +1,7 @@
-﻿using Bunit;
+﻿using System;
 using Blazor.BUnit.Wasm;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
-using System;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Blazor.BUnit.Tests
 {

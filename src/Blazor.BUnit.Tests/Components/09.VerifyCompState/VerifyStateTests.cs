@@ -1,8 +1,6 @@
 ﻿using Bunit;
 using Blazor.BUnit.Wasm;
-using Microsoft.AspNetCore.Components.Web;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Threading.Tasks;
 
 namespace Blazor.BUnit.Tests
 {
@@ -17,10 +15,9 @@ namespace Blazor.BUnit.Tests
 
             VerifyState alert = cut.Instance;
             alert.Age = 20;
-            alert.Name = "Saleh";            
+            alert.Name = "Saleh";
 
             Assert.AreEqual(alert.Greet(), "Hello Saleh");
-
         }
     }
 }

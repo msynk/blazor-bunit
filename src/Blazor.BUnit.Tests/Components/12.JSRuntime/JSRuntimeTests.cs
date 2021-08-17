@@ -1,10 +1,6 @@
 ﻿using Bunit;
 using Blazor.BUnit.Wasm;
-using Microsoft.AspNetCore.Components.Web;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace Blazor.BUnit.Tests
 {
@@ -22,7 +18,6 @@ namespace Blazor.BUnit.Tests
             var span = cut.Find("span");
             var invokeButton = cut.Find("button.invoke");
             var invokeVoidButton = cut.Find("button.invoke-void");
-
 
             span.MarkupMatches("<span>result: </span>");
 
@@ -83,16 +78,11 @@ namespace Blazor.BUnit.Tests
 
             span.MarkupMatches($"<span>result: {result}</span>");
 
-
-
-
             invocationHandler.SetResult("testt");
 
             invokeButton.Click();
 
             span.MarkupMatches($"<span>result: testt</span>");
-
-
 
             invocationVoidHandler.SetVoidResult();
 

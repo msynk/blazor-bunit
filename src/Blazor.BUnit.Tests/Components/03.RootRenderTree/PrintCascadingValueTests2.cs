@@ -1,8 +1,7 @@
 ﻿using Bunit;
 using Blazor.BUnit.Wasm;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Components;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Blazor.BUnit.Tests
 {
@@ -21,7 +20,7 @@ namespace Blazor.BUnit.Tests
               .Add(p => p.Value, value)
             );
 
-            // The component will be rendered as a chld of last 
+            // The component will be rendered as a chld of last
             // component added to the RenderTree property.
             var cut = ctx.RenderComponent<PrintCascadingValue>();
 

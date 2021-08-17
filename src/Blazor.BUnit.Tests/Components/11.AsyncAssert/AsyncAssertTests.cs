@@ -1,9 +1,7 @@
 ﻿using Bunit;
 using Blazor.BUnit.Wasm;
-using Microsoft.AspNetCore.Components.Web;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
 namespace Blazor.BUnit.Tests

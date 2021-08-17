@@ -1,6 +1,5 @@
 ﻿using Bunit;
 using Blazor.BUnit.Wasm;
-using Microsoft.AspNetCore.Components.Web;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Blazor.BUnit.Tests

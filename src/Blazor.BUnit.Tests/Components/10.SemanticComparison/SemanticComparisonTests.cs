@@ -1,8 +1,6 @@
 ﻿using Bunit;
 using Blazor.BUnit.Wasm;
-using Microsoft.AspNetCore.Components.Web;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Threading.Tasks;
 
 namespace Blazor.BUnit.Tests
 {
@@ -89,8 +87,6 @@ namespace Blazor.BUnit.Tests
 
             h4.MarkupMatches(expected);
         }
-
-
 
         [TestMethod]
         public void Test5()

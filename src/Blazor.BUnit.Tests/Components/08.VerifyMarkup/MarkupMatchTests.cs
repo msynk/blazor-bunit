@@ -1,8 +1,6 @@
 ﻿using Bunit;
 using Blazor.BUnit.Wasm;
-using Microsoft.AspNetCore.Components.Web;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Threading.Tasks;
 
 namespace Blazor.BUnit.Tests
 {
@@ -27,7 +25,6 @@ namespace Blazor.BUnit.Tests
             var smallElm = cut.Find("small");
             smallElm.MarkupMatches(@"<small class=""mark text-muted"">Secondary text</small>");
         }
-
 
         [TestMethod]
         public void Test3()

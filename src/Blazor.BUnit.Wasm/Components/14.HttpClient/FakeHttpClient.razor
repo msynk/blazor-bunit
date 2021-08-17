@@ -1,0 +1,20 @@
+﻿@namespace Blazor.BUnit.Wasm
+<h1>HttpClient</h1>
+
+<button class="invoke" @onclick="SendRequest">Send Request</button>
+<span>result: @Result</span>
+
+@code
+{
+    private string Result { get; set; } = "";
+
+    [Inject] public HttpClient Http { get; set; }
+
+    private async Task SendRequest()
+    {
+        var response = await Http.GetAsync("/getUsers");
+        //if (response.IsSuccessStatusCode == false) return;
+
+        Result = await response.Content.ReadAsStringAsync();
+    }
+}
