@@ -1,12 +1,12 @@
 ﻿@using Microsoft.AspNetCore.Components.Authorization
-@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject AuthenticationStateProvider AuthStateProvider
 @namespace Blazor.BUnit.Wasm
 
 <h1>User Info</h1>
 
 @if (isAuthenticated)
 {
-    <h1>Welcome @userName</h1>
+    <h1>Welcome @name</h1>
 }
 @if (!isAuthenticated)
 {
@@ -27,12 +27,12 @@
 @code
 {
     bool isAuthenticated = false;
-    string userName;
+    string name;
 
     protected override async Task OnParametersSetAsync()
     {
-        var state = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var state = await AuthStateProvider.GetAuthenticationStateAsync();
         isAuthenticated = state.User.Identity.IsAuthenticated;
-        userName = state.User.Identity.Name;
+        name = state.User.Identity.Name;
     }
 }

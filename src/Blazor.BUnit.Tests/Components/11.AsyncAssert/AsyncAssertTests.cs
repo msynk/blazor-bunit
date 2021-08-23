@@ -22,7 +22,7 @@ namespace Blazor.BUnit.Tests
 
             //p.MarkupMatches($"<p>Data-{id}</p>");
 
-            cut.WaitForAssertion(() => p.MarkupMatches($"<p>Data-{id}</p>"), TimeSpan.FromSeconds(2));
+            cut.WaitForAssertion(() => p.MarkupMatches($"<p>Data-{id}</p>"), TimeSpan.FromSeconds(2.1));
         }
     }
 }
