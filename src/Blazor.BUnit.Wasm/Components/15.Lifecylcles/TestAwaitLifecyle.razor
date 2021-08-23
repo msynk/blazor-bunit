@@ -1,0 +1,114 @@
+﻿@namespace Blazor.BUnit.Wasm
+@implements IDisposable
+<h3>Test Await Lifecyle</h3>
+
+<div>Age: @Age</div>
+
+<button class="invoke" @onclick="HandleClick">Click Me</button>
+<span>result: @Result</span>
+
+@code
+{
+    [Inject] private IJSRuntime js { get; set; }
+
+    private bool _shouldRender;
+    private string name;
+    private int age;
+
+    [Parameter]
+    public string Name
+    {
+        get
+        {
+            return name;
+        }
+        set
+        {
+            name = value;
+            _shouldRender = false;
+        }
+    }
+
+    [Parameter]
+    public int Age
+    {
+        get
+        {
+            return age;
+        }
+        set
+        {
+            if (value == age)
+            {
+                _shouldRender = false;
+                return;
+            }
+            age = value;
+            _shouldRender = true;
+        }
+    }
+
+    private string Result { get; set; } = "";
+
+    private void HandleClick()
+    {
+        Result = DateTime.Now.Ticks.ToString();
+        _shouldRender = true;
+    }
+
+    public override async Task SetParametersAsync(ParameterView parameters)
+    {
+        _ = js.InvokeVoidAsync("console.log", "SetParametersAsync:", "before");
+        await base.SetParametersAsync(parameters);
+
+        await js.InvokeVoidAsync("console.log", "SetParametersAsync");
+
+        await Task.Delay(1000);
+
+        await js.InvokeVoidAsync("console.log", "SetParametersAsync:", "after");
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await js.InvokeVoidAsync("console.log", "OnInitializedAsync");
+
+        await Task.Delay(1000);
+
+        await js.InvokeVoidAsync("console.log", "OnInitializedAsync:", "after");
+
+        await base.OnInitializedAsync();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await js.InvokeVoidAsync("console.log", "OnParametersSetAsync");
+
+        await Task.Delay(1000);
+
+        await js.InvokeVoidAsync("console.log", "OnParametersSetAsync:", "after");
+
+        await base.OnParametersSetAsync();
+    }
+
+    protected override bool ShouldRender()
+    {
+        js.InvokeVoidAsync("console.log", "ShouldRender:", _shouldRender);
+        return _shouldRender;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await js.InvokeVoidAsync("console.log", "OnAfterRenderAsync:", firstRender);
+
+        await Task.Delay(1000);
+
+        await js.InvokeVoidAsync("console.log", "OnAfterRenderAsync:", "after");
+
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+    void IDisposable.Dispose()
+    {
+        js.InvokeVoidAsync("console.log", "Dispose:", "TestAwaitLifecyle");
+    }
+}

@@ -1,0 +1,93 @@
+﻿@namespace Blazor.BUnit.Wasm
+@implements IDisposable
+<h3>Test Lifecyle</h3>
+
+<div>Age: @Age</div>
+
+<button class="invoke" @onclick="HandleClick">Click Me</button>
+<span>result: @Result</span>
+
+@code
+{
+    [Inject] private IJSRuntime js { get; set; }
+
+    private bool _shouldRender;
+    private string name;
+    private int age;
+
+    [Parameter]
+    public string Name
+    {
+        get
+        {
+            return name;
+        }
+        set
+        {
+            name = value;
+            _shouldRender = false;
+        }
+    }
+
+    [Parameter]
+    public int Age
+    {
+        get
+        {
+            return age;
+        }
+        set
+        {
+            if (value == age)
+            {
+                _shouldRender = false;
+                return;
+            }
+            age = value;
+            _shouldRender = true;
+        }
+    }
+
+    private string Result { get; set; } = "";
+
+    private void HandleClick()
+    {
+        Result = DateTime.Now.Ticks.ToString();
+        _shouldRender = true;
+    }
+
+    public override Task SetParametersAsync(ParameterView parameters)
+    {
+        js.InvokeVoidAsync("console.log", "SetParametersAsync");
+        return base.SetParametersAsync(parameters);
+    }
+
+    protected override Task OnInitializedAsync()
+    {
+        js.InvokeVoidAsync("console.log", "OnInitializedAsync");
+        return base.OnInitializedAsync();
+    }
+
+    protected override Task OnParametersSetAsync()
+    {
+        js.InvokeVoidAsync("console.log", "OnParametersSetAsync");
+        return base.OnParametersSetAsync();
+    }
+
+    protected override bool ShouldRender()
+    {
+        js.InvokeVoidAsync("console.log", "ShouldRender:", _shouldRender);
+        return _shouldRender;
+    }
+
+    protected override Task OnAfterRenderAsync(bool firstRender)
+    {
+        js.InvokeVoidAsync("console.log", "OnAfterRenderAsync:", firstRender);
+        return base.OnAfterRenderAsync(firstRender);
+    }
+
+    void IDisposable.Dispose()
+    {
+        js.InvokeVoidAsync("console.log", "Dispose:", "TestLifecyle");
+    }
+}
