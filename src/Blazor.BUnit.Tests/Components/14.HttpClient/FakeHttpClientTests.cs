@@ -26,7 +26,7 @@ namespace Blazor.BUnit.Tests
             var result = "this is the getUsers response";
             mockHttpHandler.When("/getUsers").Respond(async () =>
             {
-                await Task.Delay(900);
+                await Task.Delay(1200);
                 return new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(result) };
             });
 
@@ -37,7 +37,7 @@ namespace Blazor.BUnit.Tests
             button.Click();
 
             //span.MarkupMatches($"<span>result: {result}</span>");
-            cut.WaitForAssertion(() => span.MarkupMatches($"<span>result: {result}</span>"));
+            cut.WaitForAssertion(() => span.MarkupMatches($"<span>result: {result}</span>"), TimeSpan.FromSeconds(2));
         }
     }
 }

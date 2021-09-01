@@ -72,7 +72,7 @@
     {
         await js.InvokeVoidAsync("console.log", "OnInitializedAsync");
 
-        await Task.Delay(1000);
+        await Task.Delay(1100);
 
         await js.InvokeVoidAsync("console.log", "OnInitializedAsync:", "after");
 
@@ -83,7 +83,7 @@
     {
         await js.InvokeVoidAsync("console.log", "OnParametersSetAsync");
 
-        await Task.Delay(1000);
+        await Task.Delay(1200);
 
         await js.InvokeVoidAsync("console.log", "OnParametersSetAsync:", "after");
 
@@ -100,7 +100,7 @@
     {
         await js.InvokeVoidAsync("console.log", "OnAfterRenderAsync:", firstRender);
 
-        await Task.Delay(1000);
+        await Task.Delay(1300);
 
         await js.InvokeVoidAsync("console.log", "OnAfterRenderAsync:", "after");
 
